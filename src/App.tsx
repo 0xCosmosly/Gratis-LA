@@ -674,6 +674,17 @@ export default function App() {
     setSelectedId(null);
   };
 
+  const scrollToTopOfList = () => {
+    const listSection = document.getElementById('list-section');
+    if (listSection) {
+      // 120px rough offset for mobile sticky header
+      const y = listSection.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleUseCurrentLocation = () => {
     if (!userLocation) {
       requestUserLocation();
@@ -1441,7 +1452,7 @@ export default function App() {
                       disabled={mobilePage === 1}
                       onClick={() => {
                         setMobilePage((p) => Math.max(1, p - 1));
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        scrollToTopOfList();
                       }}
                       className="pagination-btn"
                     >
@@ -1454,7 +1465,7 @@ export default function App() {
                       disabled={mobilePage === totalMobilePages}
                       onClick={() => {
                         setMobilePage((p) => Math.min(totalMobilePages, p + 1));
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        scrollToTopOfList();
                       }}
                       className="pagination-btn"
                     >
