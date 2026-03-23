@@ -1,0 +1,16 @@
+scripts/* linguist-vendored=true
+docs/* linguist-vendored=true
+data/* linguist-vendored=true
+public/* linguist-vendored=true
+*.js linguist-vendored=true
+*.mjs linguist-vendored=true
+*.css linguist-vendored=true
+*.html linguist-vendored=true
+*.py linguist-vendored=true
+*.sh linguist-vendored=true
+ios/** linguist-vendored=true
+supabase/** linguist-vendored=true
+*.swift linguist-detectable=false
+*.rb linguist-detectable=false
+*.sql linguist-detectable=false
+Podfile linguist-detectable=false

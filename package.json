@@ -1,0 +1,39 @@
+{
+  "name": "gratis-la",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "quickstart": "./scripts/quickstart.sh",
+    "dev": "vite",
+    "build:web": "tsc -b && vite build",
+    "build": "npm run build:web",
+    "preview": "vite preview",
+    "split:tracked": "node scripts/split-tracked-restaurants.mjs",
+    "import:la-master": "node scripts/import-la-restaurant-master-list.mjs",
+    "build:no-tip-leads": "node scripts/build-strict-no-tip-lead-queue.mjs",
+    "scrape:koreatown": "node scripts/scrape-koreatown-official-sites.mjs",
+    "check:sources": "node scripts/check-sources.mjs",
+    "scrape:la": "node scripts/scrape-greater-la-no-tip.mjs",
+    "enrich:la": "node scripts/enrich-local-restaurants-from-official-sites.mjs && node scripts/validate-local-restaurants.mjs",
+    "validate:local-data": "node scripts/validate-local-restaurants.mjs",
+    "verify:db": "node scripts/verify-restaurants.mjs",
+    "sync:seed": "node scripts/sync-seed-to-supabase.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.48.1",
+    "@types/leaflet": "^1.9.21",
+    "leaflet": "^1.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "crawlee": "^3.16.0",
+    "playwright": "^1.58.2",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.14"
+  }
+}
