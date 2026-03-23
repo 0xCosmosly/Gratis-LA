@@ -1008,6 +1008,11 @@ a {
   min-height: calc(var(--fluid-control-height) + 2px);
 }
 
+.evidence-rail .stage-heading {
+  margin-bottom: 4px;
+  min-height: auto;
+}
+
 .map-stage-heading {
   justify-content: flex-end;
 }
@@ -2219,13 +2224,25 @@ button:disabled {
     flex-direction: column;
   }
 
+  .mobile-sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 10050;
+    background: var(--surface);
+    padding-top: 6px;
+    margin-top: -6px; /* offset the padding */
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 12px;
+  }
+
   .mobile-shared-controls {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-bottom: 6px;
+    margin-bottom: 0;
     position: relative;
-    z-index: 10050;
+    z-index: 1;
   }
 
   .workspace-grid {
