@@ -56,9 +56,9 @@ async function runSmokeTest() {
     issues.push(`Failed Network Request: ${request.url()} - ${request.failure().errorText}`);
   });
 
-  console.log(`Navigating to https://localhost:${port}...`);
+  console.log(`Navigating to https://localhost:${port}/Gratis-LA/...`);
   try {
-    const response = await page.goto(`https://localhost:${port}`, { waitUntil: 'networkidle' });
+    const response = await page.goto(`https://localhost:${port}/Gratis-LA/`, { waitUntil: 'networkidle' });
     if (!response.ok()) {
       issues.push(`HTTP Status: ${response.status()} ${response.statusText()}`);
     }

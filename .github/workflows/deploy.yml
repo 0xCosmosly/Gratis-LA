@@ -34,13 +34,19 @@ jobs:
       - name: Build
         run: npm run build
         
+      - name: Restructure for subpath
+        run: |
+          mkdir -p deploy/Gratis-LA
+          cp -r dist/* deploy/Gratis-LA/
+          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/Gratis-LA/" /></head><body></body></html>' > deploy/index.html
+          
       - name: Setup Pages
         uses: actions/configure-pages@v5
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './deploy'
 
   deploy:
     environment:

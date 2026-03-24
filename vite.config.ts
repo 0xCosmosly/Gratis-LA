@@ -24,7 +24,7 @@ function getGitHubPagesBasePath() {
 }
 
 export default defineConfig(({ command }) => ({
-  base: process.env.VITE_BASE_PATH?.trim() || (process.env.GITHUB_ACTIONS === 'true' ? getGitHubPagesBasePath() : '/'),
+  base: '/Gratis-LA/',
   plugins: [react(), basicSsl()],
   server: {
     https: true as any,
