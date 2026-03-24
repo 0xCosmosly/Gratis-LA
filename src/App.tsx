@@ -465,7 +465,7 @@ export default function App() {
     const nextUrl = new URL(window.location.href);
     const selectedRestaurantForUrl = restaurants.find((restaurant) => restaurant.id === selectedId) ?? null;
 
-    if (selectedRestaurantForUrl && (hasExplicitLocationSelection.current || initialSelectedRestaurantToken)) {
+    if (selectedRestaurantForUrl && hasExplicitLocationSelection.current) {
       nextUrl.searchParams.set(
         selectedRestaurantUrlParam,
         selectedRestaurantForUrl.slug || selectedRestaurantForUrl.id

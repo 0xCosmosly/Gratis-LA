@@ -1,3 +1,9 @@
+
+// Handle redirect from root to /Gratis-LA if accessed via 0xcosmosly.github.io/
+if (window.location.hostname === '0xcosmosly.github.io' && (window.location.pathname === '/' || window.location.pathname === '')) {
+  window.location.replace('/Gratis-LA/');
+}
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
