@@ -38,7 +38,11 @@ jobs:
         run: |
           mkdir -p deploy/Gratis-LA
           cp -r dist/* deploy/Gratis-LA/
-                    
+          
+          # Add kill switch to unregister any old root-level Service Workers
+          echo '<!DOCTYPE html><html><head><title>404 Not Found</title><script>if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(function(r){for(let i=0;i<r.length;i++){r[i].unregister()}})}</script></head><body><h1>404 Not Found</h1></body></html>' > deploy/index.html
+          echo 'self.addEventListener("install", function(e) { self.skipWaiting(); }); self.addEventListener("activate", function(e) { self.registration.unregister(); self.clients.claim(); });' > deploy/sw.js
+          
       - name: Setup Pages
         uses: actions/configure-pages@v5
         
