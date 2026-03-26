@@ -404,15 +404,6 @@ export function MapView({
     });
 
     
-    const updateMarkerVisibility = () => {
-      markersRef.current.forEach(({ marker }) => {
-        marker.setStyle({ opacity: 1, fillOpacity: 1 });
-      });
-    };
-
-    
-    map.on('zoomend', updateMarkerVisibility);
-    updateMarkerVisibility();
 
     if (visibleRestaurants.length === 0) {
       map.closePopup();
@@ -444,20 +435,14 @@ export function MapView({
       map.closePopup();
       map.once('moveend', openSelectedPopup);
       focusMapOnUserAndRestaurant(map, userLocation, selectedRestaurant);
-      return;
-    }
-
-    if (hasSelectedRestaurantChanged) {
+    } else if (hasSelectedRestaurantChanged) {
       map.closePopup();
       const targetLatLng: L.LatLngTuple = [selectedRestaurant.lat as number, selectedRestaurant.lng as number];
       const currentZoom = map.getZoom() ?? DEFAULT_ZOOM;
       const nextZoom = currentZoom < DEFAULT_ZOOM ? DEFAULT_ZOOM : currentZoom;
       map.once('moveend', openSelectedPopup);
       map.setView(targetLatLng, nextZoom, { animate: false });
-      return;
-    }
-
-    if (map.getZoom() < 10) {
+    } else if (map.getZoom() < 10) {
       map.once('moveend', openSelectedPopup);
       const targetLatLng: L.LatLngTuple = [selectedRestaurant.lat as number, selectedRestaurant.lng as number];
       map.flyTo(targetLatLng, USER_LOCATION_ZOOM, { duration: 0.8 });
@@ -466,8 +451,7 @@ export function MapView({
     }
 
     return () => {
-      
-      map.off('zoomend', updateMarkerVisibility);
+      map.off('moveend', openSelectedPopup);
     };
   }, [
     chainCounts,
