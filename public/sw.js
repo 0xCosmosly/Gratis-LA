@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gratis-la-shell-v10';
+const CACHE_NAME = 'gratis-la-shell-v11';
 const scopePath = self.location.pathname.replace(/[^/]*$/, '');
 const withScope = (path = '') => new URL(path, self.location.origin + scopePath).pathname;
 const APP_SHELL = [

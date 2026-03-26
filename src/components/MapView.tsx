@@ -466,7 +466,7 @@ export function MapView({
     }
 
     return () => {
-      map.off('zoomstart', hideAllMarkers);
+      
       map.off('zoomend', updateMarkerVisibility);
     };
   }, [
