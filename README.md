@@ -1,46 +1,45 @@
 # Gratis LA
 
-A website-first Koreatown research database that works on mobile and desktop under strict rules:
+A community-sourced map of restaurants around Los Angeles that either enforce a strict no-tipping policy or fold gratuity/service fees transparently into their final prices. 
 
-- Tips are not accepted.
-- No service fee is imposed.
-- Fast food chains are excluded.
-- Listings include source citations.
+Built to help locals find straightforward dining experiences under strict criteria:
+- Tips are generally not accepted or entirely optional.
+- Service fees are clearly documented and credited.
+- Fast food chains are excluded to focus on full-service and unique counter-service spots.
+- Every single listing includes source citations so you know *why* it's on the map.
 
 ## Project Structure
 
 This project uses a React frontend powered by Vite and a backend powered by Supabase.
 
-- **`src/`**: Contains the React application code. This is where all the UI components, styles, map logic (Leaflet), and state management live.
+- **`src/`**: The React application code. This is where all the UI components, styles, map logic (Leaflet), and state management live.
 - **`public/`**: Static assets that don't need processing, like the PWA manifest, service workers, and app icons.
 - **`scripts/`** *(local only)*: Automation tools used for gathering, validating, and managing data behind the scenes. This includes scrapers, formatting scripts, and database sync utilities.
 - **`supabase/`** *(local only)*: Contains the database schema and seed data to replicate the exact database state locally.
 - **`data/`** *(local only)*: Raw output logs from web scrapers and AI agents used to gather new leads and build the database.
-- **`docs/`** *(local only)*: Legacy GitHub Pages deployment folder.
 
-*(Note: Data, Supabase credentials, and iOS build artifacts are kept off the public repository for security and cleanliness.)*
+*(Note: Certain data files, Supabase credentials, and iOS build artifacts are kept off the public repository for security and cleanliness.)*
 
-## Quick start (no accounts, no data keys)
+## Quick Start (No accounts, no API keys)
 
-Run immediately in local mode:
+You can run the app immediately in local mode to check it out:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Local mode behavior:
+When running locally without a database connected:
+- The app automatically loads bundled demo data.
+- No Supabase account is required.
+- You get the exact same responsive UI on both mobile and desktop.
+- The live interactive map works out of the box.
 
-- Loads bundled demo data automatically.
-- No Supabase account needed.
-- Uses the same responsive UI on phones and desktops.
-- Includes a live interactive map.
+## Setting up Full Cloud Mode (Optional)
 
-## Setting up Full Cloud Mode (optional)
+If you want to run the live site with shared data, moderation features, and scheduled verification updates, you'll need to hook it up to a backend.
 
-Use this only when you want live shared data, moderation, and scheduled verification updates.
-
-### 1. Configure local env
+### 1. Configure your local environment
 
 1. Copy `.env.example` to `.env`.
 2. Fill your Supabase variables:
@@ -50,8 +49,8 @@ VITE_SUPABASE_URL=...
 VITE_SUPABASE_ANON_KEY=...
 ```
 
-With valid environment keys, the website switches automatically from demo mode to Supabase-backed live mode when you run `npm run dev`.
+With valid environment keys, the website automatically switches from demo mode to Supabase-backed live mode when you run `npm run dev`.
 
-## Important note
+## Important Note
 
-No free data source can guarantee perfect policy freshness at all times. This app is built for transparency with visible citations.
+Restaurant policies change frequently! While we try our best, no free data source can guarantee perfect policy freshness at all times. This app is built entirely around transparency, which is why we link out to menus, articles, and Reddit threads as visible citations for every spot.
