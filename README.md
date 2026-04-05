@@ -1,56 +1,39 @@
 # Gratis LA
 
-A community-sourced map of restaurants around Los Angeles that either enforce a strict no-tipping policy or fold gratuity/service fees transparently into their final prices. 
+**[🌟 View the Project on GitHub](https://github.com/0xCosmosly/Gratis-LA)**
 
-Built to help locals find straightforward dining experiences under strict criteria:
-- Tips are generally not accepted or entirely optional.
-- Service fees are clearly documented and credited.
-- Fast food chains are excluded to focus on full-service and unique counter-service spots.
-- Every single listing includes source citations so you know *why* it's on the map.
+Gratis LA is a community-sourced map of restaurants around Los Angeles that either enforce a strict no-tipping policy or transparently fold gratuity/service fees into their final prices. The project aims to help locals find straightforward dining experiences under strict criteria, bringing clarity to an increasingly confusing dining landscape. 
 
-## Project Structure
+## Project Description
 
-This project uses a React frontend powered by Vite and a backend powered by Supabase.
+Gratis LA serves as an interactive directory and map to find restaurants that eliminate hidden fees and expected tips. The core mission is transparency. To ensure accuracy, the platform enforces a strict data verification methodology:
+- Tips must be explicitly not expected, not accepted, or entirely optional.
+- Service fees must be clearly documented, credited, and mandatory on every bill (transparently included).
+- Fast food chains are generally excluded to focus on full-service and unique counter-service spots.
+- Every single listing includes source citations (official menus, newsroom pages, institutional hospitality PDFs, etc.) so users know exactly *why* a location is on the map.
 
-- **`src/`**: The React application code. This is where all the UI components, styles, map logic (Leaflet), and state management live.
-- **`public/`**: Static assets that don't need processing, like the PWA manifest, service workers, and app icons.
-- **`scripts/`** *(local only)*: Automation tools used for gathering, validating, and managing data behind the scenes. This includes scrapers, formatting scripts, and database sync utilities.
-- **`supabase/`** *(local only)*: Contains the database schema and seed data to replicate the exact database state locally.
-- **`data/`** *(local only)*: Raw output logs from web scrapers and AI agents used to gather new leads and build the database.
+## How the Site Functions
 
-*(Note: Certain data files, Supabase credentials, and iOS build artifacts are kept off the public repository for security and cleanliness.)*
+The Gratis LA platform is built as a responsive web application (using React and Vite, backed by Supabase) that seamlessly works across desktop and mobile devices. 
 
-## Quick Start (No accounts, no API keys)
+### Interactive Map and List Views
+- **Dual Interface:** Users can explore restaurants via an interactive map (powered by Leaflet) or scroll through a detailed list view. On mobile devices, the interface elegantly toggles between the map and list panels to maximize screen real estate.
+- **Geolocation Integration:** If a user provides location access, the app calculates distances using the Haversine formula and can automatically focus on or highlight the closest mapped restaurant to the user's current location.
+- **Detailed Restaurant Cards:** Clicking on a restaurant reveals a detailed card containing its verification status, policy type ("No tip" vs "Included" fee), restaurant category (e.g., sit-down, quick service, bar), and a direct link to the official citation proving their policy.
 
-You can run the app immediately in local mode to check it out:
+### Filtering and Search
+- **Policy Filters:** Users can filter the map by specific policies:
+  - `No Tip`: Restaurants that explicitly state tips are not accepted or expected.
+  - `Included`: Restaurants that add a mandatory, transparent service fee to every bill in lieu of an expected tip.
+  - `Unverified`: New leads that are awaiting community or admin verification.
+- **Restaurant Categories:** The view can be narrowed down to specific dining experiences like Sit-Down, Quick Service, Bars, or Chains.
+- **Search Capabilities:** A robust search bar allows users to quickly find specific restaurants by name or explore specific neighborhoods.
 
-```bash
-npm install
-npm run dev
-```
+### Community Verification System
+- **Crowdsourced Accuracy:** The platform includes a community moderation feature. Users can cast verification votes on a restaurant (`verified`, `candidate`, `needs_review`, `rejected`) to maintain the integrity of the data.
+- **Strict Evidence Rules:** To maintain high quality, the site relies on exact-phrase discovery on official domains (e.g., "gratuity-free", "tips are not expected or accepted"). Third-party review sites like Yelp or Reddit are used only as leads, not as official proof.
 
-When running locally without a database connected:
-- The app automatically loads bundled demo data.
-- No Supabase account is required.
-- You get the exact same responsive UI on both mobile and desktop.
-- The live interactive map works out of the box.
-
-## Setting up Full Cloud Mode (Optional)
-
-If you want to run the live site with shared data, moderation features, and scheduled verification updates, you'll need to hook it up to a backend.
-
-### 1. Configure your local environment
-
-1. Copy `.env.example` to `.env`.
-2. Fill your Supabase variables:
-
-```bash
-VITE_SUPABASE_URL=...
-VITE_SUPABASE_ANON_KEY=...
-```
-
-With valid environment keys, the website automatically switches from demo mode to Supabase-backed live mode when you run `npm run dev`.
-
-## Important Note
-
-Restaurant policies change frequently! While we try our best, no free data source can guarantee perfect policy freshness at all times. This app is built entirely around transparency, which is why we link out to menus, articles, and Reddit threads as visible citations for every spot.
+### Technical Architecture
+- **Frontend:** A React Single Page Application (SPA) providing a fast, app-like experience with highly responsive state management.
+- **Backend/Data Sync:** Designed to work both in a local "demo" mode with bundled data for immediate access, and in a full "cloud" mode using Supabase. The cloud mode enables live data sharing, the community moderation voting system, and scheduled verification updates.
+- **Progressive Web App (PWA):** Built with static assets, a manifest, and service workers, allowing users to install the directory directly on their mobile devices for quick access on the go.
