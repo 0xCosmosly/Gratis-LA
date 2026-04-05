@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But don't ignore directories
+!*/
+
+# Track specific files
+!.gitignore
+!README.md
