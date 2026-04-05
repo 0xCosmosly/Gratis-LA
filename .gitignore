@@ -7,3 +7,5 @@
 # Track specific files
 !.gitignore
 !README.md
+!LICENSE
+!STRICT_NO_TIP_METHODOLOGY.md

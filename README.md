@@ -1,6 +1,6 @@
 # Gratis LA
 
-**[🌟 View the Project on GitHub](https://github.com/0xCosmosly/Gratis-LA)**
+**[🌟 View the Live Site](https://0xcosmosly.github.io/Gratis-LA/)**
 
 Gratis LA is a community-sourced map of restaurants around Los Angeles that either enforce a strict no-tipping policy or transparently fold gratuity/service fees into their final prices. The project aims to help locals find straightforward dining experiences under strict criteria, bringing clarity to an increasingly confusing dining landscape. 
 
