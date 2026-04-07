@@ -1,11 +1,6 @@
-# Ignore everything
 *
-
-# But don't ignore directories
-!*/
-
-# Track specific files
 !.gitignore
 !README.md
 !LICENSE
 !STRICT_NO_TIP_METHODOLOGY.md
+!SETUP_FOR_NON_TECHNICAL.md
